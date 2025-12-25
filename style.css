@@ -25,19 +25,16 @@ main{
 h1{
     color: #134074;
     text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.1);
-    font-size: 60px;
+    font-size: 80px;
+    font-weight: 800;
     margin: 20px 0;
 }
-.status{
-    display: flex;
-    justify-content: center;
-}
-#msg{
+.msg{
     color: #0b2545cd;
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
     font-size: 25px;
     font-weight: 500;
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 button{
@@ -63,8 +60,7 @@ button{
     background-color: #eef4ed;
     transition: transform 0.2s ease, background-color 0.2s ease;
     font-size: 120px;
-    font-weight: 800;
-    color: #134074;
+    font-weight: 700;
     text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
@@ -105,4 +101,16 @@ button{
     font-size: 50px;
     color: #0b2545dc;
     font-weight: 600;
+}
+
+.winner{
+    background-color: #a0d468;
+}
+.game-over .cell {
+    pointer-events: none;   
+    cursor: not-allowed;    
+}
+.game-over .cell:hover {
+    background-color: inherit; 
+    transform: none;           
 }

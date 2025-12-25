@@ -9,40 +9,82 @@ const winPatterns = [
     [2, 4, 6]
 ];
 
-let turn0 = true;
-let cells = document.querySelectorAll('.cell');
-let msg = document.getElementById('msg');
+let turnX = true;
+let gameOver = false;
+
+const cells = document.querySelectorAll('.cell');
+const msg = document.querySelector('.msg');
+const btn = document.querySelector('.reset');
+const board = document.querySelector('.game');
+
+const isDraw = () => {
+    return [...cells].every(cell => cell.textContent !== "");
+};
 
 cells.forEach((cell) => {
     cell.addEventListener('click', () => {
-        if (turn0) {
+        if (cell.disabled || gameOver) return;
+
+        if (turnX) {
+            cell.textContent = 'X';
+            cell.style.color = "#13315cd0";
+            msg.textContent = "Player 0's turn";
+        } else {
             cell.textContent = '0';
-            cell.disabled = true;
-            turn0 = false;
+            cell.style.color = "#8da9c4";
             msg.textContent = "Player X's turn";
         }
-        else {
-            cell.textContent = 'X';
-            cell.disabled = true;
-            turn0 = true;
-            msg.textContent = "Player O's turn";
-        }
 
-        checkWinner();
+        cell.disabled = true;
+        turnX = !turnX;
+
+        if (checkWinner()) return;
+
+        if (isDraw()) {
+            msg.textContent = "It's a Draw!";
+            btn.textContent = "New Game";
+            cells.forEach(cell => cell.disabled = true);
+            board.classList.add('game-over');
+            gameOver = true;
+        }
     });
-})
+});
 
 const checkWinner = () => {
     for (let pattern of winPatterns) {
-        let val1 = cells[pattern[0]].textContent;
-        let val2 = cells[pattern[1]].textContent;
-        let val3 = cells[pattern[2]].textContent;
-        
-        if (val1 != "" && val2 != "" && val3 != "") {
-            if (val1 === val2 && val2 === val3) {
-                console.log(`${val1} wins!`);
-            }
-        }
-    }        
+        const val1 = cells[pattern[0]].textContent;
+        const val2 = cells[pattern[1]].textContent;
+        const val3 = cells[pattern[2]].textContent;
 
-}
+        if (val1 && val1 === val2 && val2 === val3) {
+            msg.textContent = `Player ${val1} wins!`;
+
+            cells[pattern[0]].classList.add('winner');
+            cells[pattern[1]].classList.add('winner');
+            cells[pattern[2]].classList.add('winner');
+
+            btn.textContent = "New Game";
+            cells.forEach(cell => cell.disabled = true);
+            board.classList.add('game-over');
+
+            gameOver = true;
+            return true; 
+        }
+    }
+    return false;
+};
+
+
+
+btn.addEventListener('click', () => {
+    turnX = true;
+    gameOver = false;
+    cells.forEach(cell => {
+        cell.textContent = '';
+        cell.disabled = false;
+        cell.classList.remove('winner');
+    });
+    msg.textContent = "Player X's turn";
+    btn.textContent = "Reset";
+    board.classList.remove('game-over');
+});
