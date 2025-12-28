@@ -130,7 +130,7 @@ button{
     color: #ffafcc;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
     *{
         color: #C1B75F;
     }
@@ -177,4 +177,4 @@ button{
     .cell.o {
         color: #005f73;
     }
-} */
+}
