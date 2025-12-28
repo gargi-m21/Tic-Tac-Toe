@@ -12,10 +12,13 @@ const winPatterns = [
 let turnX = true;
 let gameOver = false;
 
-const cells = document.querySelectorAll('.cell');
-const msg = document.querySelector('.msg');
-const btn = document.querySelector('.reset');
-const board = document.querySelector('.game');
+let cells = document.querySelectorAll('.cell');
+let msg = document.querySelector('.msg');
+let btn = document.querySelector('.reset');
+let board = document.querySelector('.game');
+let scoreX = document.getElementById('scoreX');
+let score0 = document.getElementById('score0');
+let scoreDraw = document.getElementById('scoreDraw');
 
 const isDraw = () => {
     return [...cells].every(cell => cell.textContent !== "");
@@ -27,13 +30,16 @@ cells.forEach((cell) => {
 
         if (turnX) {
             cell.textContent = 'X';
-            cell.style.color = "#13315cd0";
+            cell.classList.add('x');
+            cell.classList.remove('o');
             msg.textContent = "Player 0's turn";
         } else {
             cell.textContent = '0';
-            cell.style.color = "#8da9c4";
+            cell.classList.add('o');
+            cell.classList.remove('x');
             msg.textContent = "Player X's turn";
         }
+
 
         cell.disabled = true;
         turnX = !turnX;
@@ -45,6 +51,7 @@ cells.forEach((cell) => {
             btn.textContent = "New Game";
             cells.forEach(cell => cell.disabled = true);
             board.classList.add('game-over');
+            scoreDraw.textContent = parseInt(scoreDraw.textContent) + 1;
             gameOver = true;
         }
     });
@@ -67,14 +74,18 @@ const checkWinner = () => {
             cells.forEach(cell => cell.disabled = true);
             board.classList.add('game-over');
 
+            if (val1 === 'X') {
+                scoreX.textContent = parseInt(scoreX.textContent) + 1;
+            } else {
+                score0.textContent = parseInt(score0.textContent) + 1;
+            }
+
             gameOver = true;
             return true; 
         }
     }
     return false;
 };
-
-
 
 btn.addEventListener('click', () => {
     turnX = true;

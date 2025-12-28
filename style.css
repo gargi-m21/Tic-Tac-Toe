@@ -1,11 +1,12 @@
 *{
     padding: 0;
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: white;
 }
 
 main{
-    background: linear-gradient(219deg, #8da9c4 0%, #13315c 100%);
+    background: linear-gradient(219deg,  #a2d2ff 0%, #ffafcc 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,7 +14,7 @@ main{
     min-width: 100vb;
 }
 .container{
-    background-color: #eef4ed;
+    background: linear-gradient(219deg, #ffc8dd 0%, #bde0fe 100%);
     height: 100%;
     width: 80vb;
     padding: 10px 50px;
@@ -23,17 +24,15 @@ main{
 }
 
 h1{
-    color: #134074;
     text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.1);
     font-size: 80px;
     font-weight: 800;
     margin: 20px 0;
 }
 .msg{
-    color: #0b2545cd;
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
-    font-size: 25px;
-    font-weight: 500;
+    font-size: 28px;
+    font-weight: 700;
     margin: 10px 0;
 }
 
@@ -51,13 +50,13 @@ button{
     gap: 10px;
     margin: 40px auto;
     box-shadow: 9px 9px 20px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(219deg, #8da9c4 0%, #13315c 100%);
+    background: linear-gradient(209deg, #a2d2ff 0%, #ffafcc 100%);
     border-radius: 30px;
 }
 
 .cell{
     border-radius: 10px;
-    background-color: #eef4ed;
+    background-color: white;
     transition: transform 0.2s ease, background-color 0.2s ease;
     font-size: 120px;
     font-weight: 700;
@@ -70,13 +69,12 @@ button{
 }
 
 .reset{
-    color: #eef4ed;
-    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.5);
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
     box-shadow: 0 4px 9px rgba(19, 64, 116, 0.3);
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 25px;
+    font-weight: 600;
     border-radius: 30px;
-    background: linear-gradient(219deg, #8da9c4 0%, #13315c 100%);
+    background: linear-gradient(219deg, #a2d2ff 0%, #ffafcc 100%);
     margin: 20px 0;
     padding: 15px 30px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -93,18 +91,29 @@ button{
     font-weight: 400;
 }
 .score-label{
-    color: #0b2545cd;
-    font-size: 18px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+    font-size: 25px;
+    font-weight: 600;
     margin: 5px;
 }
+
 .score-value{
-    font-size: 50px;
-    color: #0b2545dc;
-    font-weight: 600;
+    font-size: 60px;
+    font-weight: 700;
+    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.7);
+}
+#scoreX{ 
+    color: #a2d2ff; 
+}
+#score0{
+    color: #ffafcc;
+}
+#scoreDraw{
+    color: #cdb4db;
 }
 
 .winner{
-    background-color: #a0d468;
+    background-color: #cdb4db;
 }
 .game-over .cell {
     pointer-events: none;   
@@ -114,3 +123,58 @@ button{
     background-color: inherit; 
     transform: none;           
 }
+.cell.x {
+    color: #a2d2ff;
+}
+.cell.o {
+    color: #ffafcc;
+}
+
+/* @media (prefers-color-scheme: dark) {
+    *{
+        color: #C1B75F;
+    }
+    main{
+        background: linear-gradient(67deg,  #ae2012 0%, #005f73 100%);
+    }
+    .container{
+        background: linear-gradient(67deg, #001219 0%, #9b2226 100%);
+        box-shadow: 0 9px 20px rgba(255, 255, 255, 0.2);
+    }
+    .game{
+        box-shadow: 9px 9px 20px rgba(255, 255, 255, 0.2);
+        background: linear-gradient(67deg,  #ae2012 0%, #005f73 100%);
+    }
+    .cell{
+        background-color: #C1B75F;
+        text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+    }
+    .cell:hover{
+        background-color: #6A7D4C;
+    }
+    .reset{
+        box-shadow: 0 4px 9px rgba(255, 255, 255, 0.3);
+        background: linear-gradient(67deg,  #ae2012 0%, #005f73 100%);
+    }
+    .reset:hover{
+        box-shadow: 0 6px 11px rgba(255, 255, 255, 0.5);
+    }
+    #scoreX{ 
+        color: #ae2012;        
+    }
+    #score0{
+        color: #005f73;
+    }
+    #scoreDraw{
+        color: #AF9D60;
+    }
+    .winner{
+        background-color: #AF9D60;
+    }
+    .cell.x {
+        color: #ae2012;
+    }
+    .cell.o {
+        color: #005f73;
+    }
+} */
